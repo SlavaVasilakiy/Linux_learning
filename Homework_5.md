@@ -42,6 +42,7 @@ sudo nano /etc/netplan/01-network-manager-all.yalm
   ```
 
 После чего нажимаем ```Ctrl+O``` что бы сохранить и ```CTRL+X``` выход.<br>
+
 Перезапускаем сеть:
 
 ```linux
