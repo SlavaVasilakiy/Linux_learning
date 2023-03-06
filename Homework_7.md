@@ -233,30 +233,24 @@ sudo docker-compose up -d
 * Вводим нужные данные.
 * Всё готово !
 
+### *Запустить два контейнера, связанные одной сетью (используя документацию). <br> Первый контейнер БД (например, образ mariadb:10.8), второй контейнер — phpmyadmin. <br> Получить доступ к БД в первом контейнере через второй контейнер (веб-интерфейс phpmyadmin).
 
+```linux
+sudo docker network create -d bridge hw7-bridge-network
+```
 
+```linux
+sudo docker create --name mariadb -e "MARIADB_USER=user" -e "MARIADB_PASSWORD=password" -e "MARIADB_ROOT_PASSWORD=rootp" --network hw7-bridge-network  mariadb:10.8
+```
 
+```linux
+sudo docker start mariadb
+```
 
+```linux
+sudo docker create --name phpmyadmin -e "PMA_ARBITRARY=1" -p 8080:80 --network hw7-bridge-network phpmyadmin
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```linux
+sudo docker start phpmyadmin
+```
