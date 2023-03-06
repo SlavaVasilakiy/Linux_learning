@@ -233,6 +233,37 @@ sudo docker-compose up -d
 * Вводим нужные данные.
 * Всё готово !
 
+#### Чтобы удалить все старания:
+
+1) Останавливаем запущенные контейнеры:
+
+```linux
+sudo docker stop webserver db wordpress
+```
+
+2) Удаляем контейнеры:
+
+```linux
+sudo docker rm webserver db wordpress
+```
+
+3) Удаляем образы:
+
+```linux
+sudo docker rmi nginx:1.15.12-alpine wordpress:5.1.1-fpm-alpine mysql:8.0
+```
+4) Удаляем разделы:
+
+```linux
+sudo docker volume rm wordpress_dbdata wordpress_wordpress
+```
+
+5) Удаляем сеть:
+
+```linux
+sudo docker network rm wordpress_app-network
+```
+
 ### *Запустить два контейнера, связанные одной сетью (используя документацию). <br> Первый контейнер БД (например, образ mariadb:10.8), второй контейнер — phpmyadmin. <br> Получить доступ к БД в первом контейнере через второй контейнер (веб-интерфейс phpmyadmin).
 
 ```linux
